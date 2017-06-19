@@ -36,24 +36,18 @@
 
 
     img{max-width: 100%; height: auto;}
-    .weixin-tip{display: none; position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 100;}
-    .weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
 </style>
 <body>
    <div class="header">
-       <a class="header_down" href="#">立即下载</a>
+       <a href="javascript:void(0)" class="header_down">立即下载</a>
        <div class="header_title">
             <div class="title_top">谷子孕婴网客户端</div>
             <div class="title_middle">最新版本：v3.0.0大小：23MB</div>
             <div class="title_bottom">最后更新：2017年6月19日</div>
        </div>
    </div>
-   <!--遮罩-->
-   <div class="weixin-tip">
-       <p>
-           <img src="images/live_weixin.png" alt="微信打开"/>
-       </p>
-   </div>
+
+
 
    <div class="banner">
         <div id="slideBox" class="slideBox">
@@ -83,24 +77,39 @@
            autoPage:true //自动分页
        });
 
-        $(".header_down").on("touchstart",function () {
-            $(window).on("load",function(){
-                var winHeight = $(window).height();
-                function is_weixin() {
-                    var ua = navigator.userAgent.toLowerCase();
-                    if (ua.match(/MicroMessenger/i) == "micromessenger") {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-                var isWeixin = is_weixin();
-                if(isWeixin){
-                    $(".weixin-tip").css("height",winHeight);
-                    $(".weixin-tip").show();
-                }
-            })
-        })
+       function is_weixin() {
+           var ua = navigator.userAgent.toLowerCase();
+           if (ua.match(/MicroMessenger/i) == "micromessenger") {
+               return true;
+           } else {
+               return false;
+           }
+       }
+       var isWeixin = is_weixin();
+       var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+       var weixinTip = $('<div id="weixinTip"><p><img src="images/live_weixin.png" alt="微信打开"/></p></div>');
+
+       if(isWeixin){
+           $("body").append(weixinTip);
+       }else{
+           window.location.href="http://www.guziyy.com/app.html";
+       }
+       $("#weixinTip").css({
+           "position":"fixed",
+           "left":"0",
+           "top":"0",
+           "height":winHeight,
+           "width":"100%",
+           "z-index":"1000",
+           "background-color":"rgba(0,0,0,0.8)",
+           "filter":"alpha(opacity=80)"
+       });
+       $("#weixinTip p").css({
+           "text-align":"center",
+           "margin-top":"10%",
+           "padding-left":"5%",
+           "padding-right":"5%"
+       });
 
 
    </script>
