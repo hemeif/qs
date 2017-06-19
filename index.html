@@ -75,14 +75,13 @@
         <div class="introduce_content">为了更好地向用户提供安全、规范、可靠和优质的服务，2017年1月3日起，“链链金融”将作为一个完全独立的品牌启动运营并替代“链家理财”。“链链金融”将由原“链家理财”团队管理和运营，继续开展其原有范围内的业务；并还将布局租金贷、装修贷、消费贷等。在严格遵从互联网金融相关政策法律法规要求的前提下，“链链金融”将一如既往地坚持诚信经营、合规发展，致力于为广大用户提供更优质、更多元的投资理财产品及服务。</div>
     </div>
    <script type="text/javascript">
-
        TouchSlide({
            slideCell:"#slideBox",
            titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
            mainCell:".bd ul",
            autoPage:true //自动分页
        });
-        $(".header_down").on("click",function () {
+        $(".header_down").on("touchstart",function () {
             var winHeight = $(window).height();
             function is_weixin() {
                 var ua = navigator.userAgent.toLowerCase();
@@ -100,43 +99,6 @@
                 $(".header_down")[0].href="http://www.guziyy.com/app.html";
             }
         })
-
-
-//
-//       function is_weixin() {
-//           var ua = navigator.userAgent.toLowerCase();
-//           if (ua.match(/MicroMessenger/i) == "micromessenger") {
-//               return true;
-//           } else {
-//               return false;
-//           }
-//       }
-//       var isWeixin = is_weixin();
-//       var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
-//       var weixinTip = $('<div id="weixinTip"><p><img src="images/live_weixin.png" alt="微信打开"/></p></div>');
-//
-//       if(isWeixin){
-//           $("body").append(weixinTip);
-//       }else{
-//           $(".header_down").location.href="http://www.guziyy.com/app.html";
-//       }
-//       $("#weixinTip").css({
-//           "position":"fixed",
-//           "left":"0",
-//           "top":"0",
-//           "height":winHeight,
-//           "width":"100%",
-//           "z-index":"1000",
-//           "background-color":"rgba(0,0,0,0.8)",
-//           "filter":"alpha(opacity=80)"
-//       });
-//       $("#weixinTip p").css({
-//           "text-align":"center",
-//           "margin-top":"10%",
-//           "padding-left":"5%",
-//           "padding-right":"5%"
-//       });
-
 
    </script>
 </body>
