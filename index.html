@@ -41,7 +41,7 @@
 </style>
 <body>
    <div class="header">
-       <a href="#" class="header_down">立即下载</a>
+       <a href="http://www.guziyy.com/app.html" class="header_down">立即下载</a>
        <div class="header_title">
             <div class="title_top">谷子孕婴网客户端</div>
             <div class="title_middle">最新版本：v3.0.0大小：23MB</div>
@@ -81,23 +81,22 @@
            mainCell:".bd ul",
            autoPage:true //自动分页
        });
+
+       var winHeight = $(window).height();
+       function is_weixin() {
+           var ua = navigator.userAgent.toLowerCase();
+           if (ua.match(/MicroMessenger/i) == "micromessenger") {
+               return true;
+           } else {
+               return false;
+           }
+       }
+       var isWeixin = is_weixin();
         $(".header_down").on("touchstart",function () {
-            var winHeight = $(window).height();
-            function is_weixin() {
-                var ua = navigator.userAgent.toLowerCase();
-                if (ua.match(/MicroMessenger/i) == "micromessenger") {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            var isWeixin = is_weixin();
             if(isWeixin){
                 $(".weixin-tip").css("height",winHeight);
                 $(".weixin-tip").show();
             }
-                $(this).attr("href","http://www.guziyy.com/app.html");
-
         })
 
    </script>
