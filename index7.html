@@ -41,7 +41,7 @@
 </style>
 <body>
    <div class="header">
-       <a href="http://www.guziyy.com/app.html" class="header_down">立即下载</a>
+       <a href="#" class="header_down">立即下载</a>
        <div class="header_title">
             <div class="title_top">谷子孕婴网客户端</div>
             <div class="title_middle">最新版本：v3.0.0大小：23MB</div>
@@ -50,7 +50,7 @@
    </div>
    <div class="weixin-tip">
        <p>
-           <img src="live_weixin.png" alt="微信打开"/>
+           <img src="images/live_weixin.png" alt="微信打开"/>
        </p>
    </div>
 
@@ -82,21 +82,25 @@
            mainCell:".bd ul",
            autoPage:true //自动分页
        });
+        $(".header_down").on("click",function () {
+            var winHeight = $(window).height();
+            function is_weixin() {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            var isWeixin = is_weixin();
+            if(isWeixin){
+                $(".weixin-tip").css("height",winHeight);
+                $(".weixin-tip").show();
+            }else{
+                $(".header_down")[0].href="http://www.guziyy.com/app.html";
+            }
+        })
 
-           var winHeight = $(window).height();
-           function is_weixin() {
-               var ua = navigator.userAgent.toLowerCase();
-               if (ua.match(/MicroMessenger/i) == "micromessenger") {
-                   return true;
-               } else {
-                   return false;
-               }
-           }
-           var isWeixin = is_weixin();
-           if(isWeixin){
-               $(".weixin-tip").css("height",winHeight);
-               $(".weixin-tip").show();
-           }
 
 //
 //       function is_weixin() {
